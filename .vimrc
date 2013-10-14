@@ -69,7 +69,7 @@ nmap <S-Left> <C-W>5<
 nmap <S-Right> <C-W>5>
 
 " Misc binding
-map <F1> :A<CR>                     " Switch cpp/h (require a.vim)
+nmap ,q :TagbarToggle<CR>
 map <silent> <C-N> :silent noh<CR>  " turn off hightlighted search
 map ,s :shell<CR>
 nmap <Space> <PageDown>
@@ -142,3 +142,34 @@ au ColorScheme * highlight ExtraWhitespace guibg=red
 au BufEnter * match ExtraWhitespace /\s\+$/
 au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 au InsertLeave * match ExtraWhiteSpace /\s\+$/
+
+" Tagbar gotags integration
+map <F3> :!gotags *.go > tags<CR>
+
+let g:tagbar_type_go = {
+    \ 'ctagstype' : 'go',
+    \ 'kinds'     : [
+        \ 'p:package',
+        \ 'i:imports:1',
+        \ 'c:constants',
+        \ 'v:variables',
+        \ 't:types',
+        \ 'n:interfaces',
+        \ 'w:fields',
+        \ 'e:embedded',
+        \ 'm:methods',
+        \ 'r:constructor',
+        \ 'f:functions'
+    \ ],
+    \ 'sro' : '.',
+    \ 'kind2scope' : {
+        \ 't' : 'ctype',
+        \ 'n' : 'ntype'
+    \ },
+    \ 'scope2kind' : {
+        \ 'ctype' : 't',
+        \ 'ntype' : 'n'
+    \ },
+    \ 'ctagsbin'  : 'gotags',
+    \ 'ctagsargs' : '-sort -silent'
+    \ }

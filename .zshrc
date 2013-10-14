@@ -12,8 +12,9 @@ compinit
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
-setopt appendhistory
+setopt inc_append_history
+setopt share_history
 bindkey -v
 # End of lines configured by zsh-newuser-install
 
-alias ll='ls -l --color'
+alias ll='ls -la --color'
