@@ -1,0 +1,10 @@
+[user]
+	email = jbjcalmels@gmail.com
+	name = Jonathan Calmels
+	mail = jbjcalmels@gmail.com
+[core]
+	editor = vim
+[merge]
+	tool = vimdiff
+[push]
+	default = upstream
