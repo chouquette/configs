@@ -111,6 +111,7 @@ if has("autocmd")
     " Activate indentation
     au FileType python    set autoindent
     au FileType go        set noexpandtab
+    au BufWritePre *.go   Fmt
 
     " Set tab settings
     au FileType c setl sw=8 ts=8 sts=4
@@ -118,9 +119,8 @@ if has("autocmd")
 endif
 
 """ NERDTree
-nmap ,n :NERDTreeClose<CR>:NERDTreeToggle<CR>
-nmap ,m :NERDTreeClose<CR>:NERDTreeFind<CR>
-nmap ,N :NERDTreeClose<CR>
+nmap ,m :NERDTreeToggle<CR>
+nmap ,n :NERDTreeFind<CR>
 
 " Store the bookmarks file
 let NERDTreeBookmarksFile=expand("$HOME/.vim/NERDTreeBookmarks")
@@ -142,6 +142,7 @@ au ColorScheme * highlight ExtraWhitespace guibg=red
 au BufEnter * match ExtraWhitespace /\s\+$/
 au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 au InsertLeave * match ExtraWhiteSpace /\s\+$/
+highlight PmenuSel ctermbg=green ctermfg=black
 
 " Tagbar gotags integration
 map <F3> :!gotags *.go > tags<CR>
