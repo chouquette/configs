@@ -17,4 +17,4 @@ setopt share_history
 bindkey -v
 # End of lines configured by zsh-newuser-install
 
-alias ll='ls -la --color'
+alias ll='ls -lA --color'

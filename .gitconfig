@@ -7,4 +7,14 @@
 [merge]
 	tool = vimdiff
 [push]
-	default = upstream
+    default = upstream
+[alias]
+    ci = commit
+    st = status
+    ps = push
+    pl = pull
+    gl = log --graph
+    df = !git diff | vim -
+    cp = cherry-pick
+    br = branch
+    mgt = mergetool
