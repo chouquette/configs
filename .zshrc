@@ -18,3 +18,4 @@ bindkey -v
 # End of lines configured by zsh-newuser-install
 
 alias ll='ls -lA --color'
+alias lld='ls -ld --color */'

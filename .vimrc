@@ -98,11 +98,11 @@ else
     set background=dark           " adapt colors for background
 endif
 
-if has("vms")
+"if has("vms")
 	set nobackup                  " do not keep a backup file, use versionning instead
-else
-	set backup                    " keep a backup file
-endif
+"else
+"	set backup                    " keep a backup file
+"endif
 
 if has("autocmd")
     " Restore cursor position
