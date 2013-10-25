@@ -3,7 +3,8 @@
 	name = Jonathan Calmels
 	mail = jbjcalmels@gmail.com
 [core]
-	editor = vim
+    editor = vim
+    excludesfile = ~/.gitignore
 [merge]
 	tool = vimdiff
 [push]
