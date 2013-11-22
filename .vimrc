@@ -111,6 +111,7 @@ if has("autocmd")
     " Activate indentation
     au FileType python    set autoindent
     au FileType go        set noexpandtab
+    au FileType go        set list listchars=tab:\ \ ,
     au BufWritePre *.go   Fmt
 
     " Set tab settings
