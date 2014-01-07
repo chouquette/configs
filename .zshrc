@@ -20,3 +20,5 @@ bindkey -v
 alias ll='ls -lA --color'
 alias lld='ls -ld --color */'
 alias grepr='grep -R --color'
+
+export GOPATH=/home/exxo/work/godev
