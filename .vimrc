@@ -1,11 +1,3 @@
-" tagbar, snipmate, comments, cscope, nerdtree
-
-""" Pathogen
-" Use pathogen to easily modify the runtime path to include all
-" plugins under the ~/.vim/bundle directory
-call pathogen#helptags()
-call pathogen#runtime_append_all_bundles()
-
 set nocompatible      " use vim defaults
 set encoding=utf-8    " use utf-8
 set ls=2              " always show status line
@@ -37,19 +29,15 @@ set showmatch         " Show matching brackets
 set backspace=indent,eol,start  " make that backspace key work the way it should
 set tabstop=4         " number of space of the tab character
 set shiftwidth=4      " number of space of (auto)indent
-
 "set autoindent        " always set autoindenting on
 "set smartindent       " smart indentation
 set noautoindent
 set nosmartindent
 set cindent           " C indentation
-
 set expandtab         " tabs are converted to spaces
 set sm                " show matching braces
 set nowrap            " don't wrap lines
-
 set wildignore=*.swp,*.bak,*.pyc
-
 set list listchars=tab:→\ ,trail:.
 
 " Enable / Disable the paste mode
@@ -68,8 +56,6 @@ nmap <S-Up> :res -5<CR>
 nmap <S-Left> <C-W>5<
 nmap <S-Right> <C-W>5>
 
-" Misc binding
-nmap ,q :TagbarToggle<CR>
 map <silent> <C-N> :silent noh<CR>  " turn off hightlighted search
 map ,s :shell<CR>
 nmap <Space> <PageDown>
@@ -80,6 +66,9 @@ highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 match OverLength /\%81v.\+/
 "set textwidth=79
 "set cc=+1
+
+" Enter validates completion
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
 
 filetype on
 filetype plugin on
@@ -112,36 +101,32 @@ if has("autocmd")
     au FileType python    set autoindent
     au FileType go        set noexpandtab
     au FileType go        set list listchars=tab:\ \ ,
+
     au BufWritePre *.go   Fmt
-    au BufWritePost *.go  call Gotags()
-    function Gotags()
-        silent! !ctags -R
-        redraw!
-    endfunction
+    "au BufWritePost *.go  call Gotags()
+    "function Gotags()
+    "    silent! !ctags -R
+    "    redraw!
+    "endfunction
 
     " Set tab settings
     au FileType c setl sw=8 ts=8 sts=4
     au FileType cpp setl sw=4 ts=4 sts=2
 endif
 
-""" NERDTree
-nmap ,m :NERDTreeToggle<CR>
-nmap ,n :NERDTreeFind<CR>
+" Go functions
+function! s:GoVet()
+    cexpr system("go vet " . shellescape(expand('%')))
+    copen
+endfunction
+command! GoVet :call s:GoVet()
 
-" Store the bookmarks file
-let NERDTreeBookmarksFile=expand("$HOME/.vim/NERDTreeBookmarks")
 
-" Don't display these kinds of files
-let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.py\$class$', '\.obj$',
-            \ '\.o$', '\.so$', '\.egg$', '^\.git$' ]
-
-let NERDTreeShowBookmarks=1       " Show the bookmarks table on startup
-let NERDTreeShowFiles=1           " Show hidden files, too
-let NERDTreeShowHidden=1
-let NERDTreeQuitOnOpen=1          " Quit on opening files from the tree
-let NERDTreeHighlightCursorline=1 " Highlight the selected entry in the tree
-let NERDTreeMouseMode=2           " Use a single click to fold/unfold directories
-                                  " and a double click to open files
+function! s:GoLint()
+    cexpr system("golint " . shellescape(expand('%')))
+    copen
+endfunction
+command! GoLint :call s:GoLint()
 
 highlight ExtraWhitespace ctermbg=red guibg=red
 au ColorScheme * highlight ExtraWhitespace guibg=red
@@ -149,6 +134,34 @@ au BufEnter * match ExtraWhitespace /\s\+$/
 au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 au InsertLeave * match ExtraWhiteSpace /\s\+$/
 highlight PmenuSel ctermbg=green ctermfg=black
+
+""""""""""""""""
+"	PLUGINS    "
+""""""""""""""""
+
+" Pathogen
+" Use pathogen to easily modify the runtime path to include all
+" plugins under the ~/.vim/bundle directory
+call pathogen#helptags()
+call pathogen#runtime_append_all_bundles()
+
+" NERDTree
+nmap ,m :NERDTreeToggle<CR>
+nmap ,n :NERDTreeFind<CR>
+
+let NERDTreeBookmarksFile=expand("$HOME/.vim/NERDTreeBookmarks") " store the bookmarks file
+let NERDTreeShowBookmarks=1       " show the bookmarks table on startup
+let NERDTreeShowFiles=1           " show hidden files, too
+let NERDTreeShowHidden=1
+let NERDTreeQuitOnOpen=1          " quit on opening files from the tree
+let NERDTreeHighlightCursorline=1 " highlight the selected entry in the tree
+let NERDTreeMouseMode=2           " use a single click to fold/unfold directories and a double click to open files
+let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.py\$class$', '\.obj$',
+            \ '\.o$', '\.so$', '\.egg$', '^\.git$' ] " don't display these kinds of files
+
+" TagBar
+
+nmap ,q :TagbarToggle<CR>
 
 let g:tagbar_type_go = {
             \ 'ctagstype' : 'go',
@@ -177,16 +190,3 @@ let g:tagbar_type_go = {
             \ 'ctagsbin'  : 'gotags',
             \ 'ctagsargs' : '-sort -silent'
             \ }
-
-function! s:GoVet()
-    cexpr system("go vet " . shellescape(expand('%')))
-    copen
-endfunction
-command! GoVet :call s:GoVet()
-
-
-function! s:GoLint()
-    cexpr system("golint " . shellescape(expand('%')))
-    copen
-endfunction
-command! GoLint :call s:GoLint()

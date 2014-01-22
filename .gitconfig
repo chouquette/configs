@@ -16,6 +16,7 @@
     pl = pull
     gl = log --graph
     df = !git diff | vim -
+    dfc = !git diff --cached | vim -
     cp = cherry-pick
     br = branch
     mgt = mergetool
