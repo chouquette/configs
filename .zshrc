@@ -21,5 +21,11 @@ alias ll='ls -lA --color'
 alias lld='ls -ld --color */'
 alias grepr='grep -R --color'
 alias sysupdate='yaourt -Suya --noconfirm'
+alias json="python -mjson.tool"
+
+replace() {
+    grep -R -I $1 2> /dev/null | cut -d ':' -f1 | xargs sed -i -e "/$1/{s;$1;$2;g; w /dev/stdout
+    }"
+}
 
 export GOPATH=/home/exxo/work/godev
