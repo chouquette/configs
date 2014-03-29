@@ -47,7 +47,7 @@ set showmode
 
 " Fold settings
 set foldmethod=syntax
-set foldcolumn=3
+set foldcolumn=0
 set foldenable
 
 " Fast window resizing
@@ -144,6 +144,10 @@ highlight PmenuSel ctermbg=green ctermfg=black
 " plugins under the ~/.vim/bundle directory
 call pathogen#helptags()
 call pathogen#runtime_append_all_bundles()
+
+" GitGlutter
+
+highlight SignColumn ctermbg=None
 
 " NERDTree
 nmap ,m :NERDTreeToggle<CR>
