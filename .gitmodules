@@ -13,3 +13,12 @@
 [submodule ".vim/bundle/vim-autoclose"]
 	path = .vim/bundle/vim-autoclose
 	url = https://github.com/Townk/vim-autoclose
+[submodule ".vim/bundle/keepcase"]
+	path = .vim/bundle/keepcase
+	url = https://github.com/vim-scripts/keepcase.vim.git
+[submodule ".vim/bundle/vim-multiple-cursors"]
+	path = .vim/bundle/vim-multiple-cursors
+	url = https://github.com/terryma/vim-multiple-cursors.git
+[submodule ".vim/bundle/vim-gitgutter"]
+	path = .vim/bundle/vim-gitgutter
+	url = https://github.com/airblade/vim-gitgutter.git
