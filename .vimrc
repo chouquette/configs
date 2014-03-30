@@ -1,3 +1,11 @@
+filetype on
+filetype plugin on
+filetype plugin indent on
+
+syntax on             " syntax highlighting
+colorscheme ir_black  " color scheme
+set background=dark   " adapt colors for background
+
 set nocompatible      " use vim defaults
 set encoding=utf-8    " use utf-8
 set ls=2              " always show status line
@@ -39,16 +47,26 @@ set sm                " show matching braces
 set nowrap            " don't wrap lines
 set wildignore=*.swp,*.bak,*.pyc
 set list listchars=tab:→\ ,trail:.
+set nobackup          " do not keep a backup file, use versionning instead
+
+" Fold settings
+set foldmethod=syntax
+set foldcolumn=0
+set foldenable
 
 " Enable / Disable the paste mode
 nnoremap ,p :set invpaste paste?<CR>
 set pastetoggle=,p
 set showmode
 
-" Fold settings
-set foldmethod=syntax
-set foldcolumn=0
-set foldenable
+" Turn off hightlighted search
+nnoremap ,h :silent noh<CR>
+
+" Open the shell
+nnoremap ,s :shell<CR>
+
+" Enter validates completion
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
 
 " Fast window resizing
 nmap <S-Down> :res +5<CR>
@@ -56,97 +74,35 @@ nmap <S-Up> :res -5<CR>
 nmap <S-Left> <C-W>5<
 nmap <S-Right> <C-W>5>
 
-map <silent> <C-N> :silent noh<CR>  " turn off hightlighted search
-map ,s :shell<CR>
 nmap <Space> <PageDown>
 cmap tb tabnew
 
-" 80 colums
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%81v.\+/
-"set textwidth=79
-"set cc=+1
+" Restore cursor position
+au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
 
-" Enter validates completion
-inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
+" Activate some language indentation
+au FileType python  set  autoindent
+au FileType c       setl sw=8 ts=8 sts=4
+au FileType cpp     setl sw=4 ts=4 sts=2
 
-filetype on
-filetype plugin on
-filetype plugin indent on
-
-syntax on                         " syntax highlighting
-if has("gui_running")             " gvim
-    set guifont=Monospace\ 10
-    set lines=50                  " height, 50 lines
-    set columns=100               " width, 100 lines
-    set background=dark           " adapt colors for background
-    set selectmode=mouse,key,cmd
-    set keymodel =
-else
-    colorscheme ir_black          " color scheme
-    set background=dark           " adapt colors for background
-endif
-
-"if has("vms")
-	set nobackup                  " do not keep a backup file, use versionning instead
-"else
-"	set backup                    " keep a backup file
-"endif
-
-if has("autocmd")
-    " Restore cursor position
-    au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
-
-    " Activate indentation
-    au FileType python    set autoindent
-    au FileType go        set noexpandtab
-    au FileType go        set list listchars=tab:\ \ ,
-
-    au BufWritePre *.go   Fmt
-    "au BufWritePost *.go  call Gotags()
-    "function Gotags()
-    "    silent! !ctags -R
-    "    redraw!
-    "endfunction
-
-    " Set tab settings
-    au FileType c setl sw=8 ts=8 sts=4
-    au FileType cpp setl sw=4 ts=4 sts=2
-endif
-
-" Go functions
-function! s:GoVet()
-    cexpr system("go vet " . shellescape(expand('%')))
-    copen
-endfunction
-command! GoVet :call s:GoVet()
-
-
-function! s:GoLint()
-    cexpr system("golint " . shellescape(expand('%')))
-    copen
-endfunction
-command! GoLint :call s:GoLint()
-
+" Extra whitespaces
 highlight ExtraWhitespace ctermbg=red guibg=red
 au ColorScheme * highlight ExtraWhitespace guibg=red
-au BufEnter * match ExtraWhitespace /\s\+$/
-au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-au InsertLeave * match ExtraWhiteSpace /\s\+$/
+au BufEnter    * match     ExtraWhitespace /\s\+$/
+au InsertEnter * match     ExtraWhitespace /\s\+\%#\@<!$/
+au InsertLeave * match     ExtraWhiteSpace /\s\+$/
+
+" Autocompletion menu
 highlight PmenuSel ctermbg=green ctermfg=black
 
-""""""""""""""""
-"	PLUGINS    "
-""""""""""""""""
+
+""""""""""""""""""""""""" PLUGINS SETTINGS """""""""""""""""""""""""""
 
 " Pathogen
-" Use pathogen to easily modify the runtime path to include all
-" plugins under the ~/.vim/bundle directory
 call pathogen#helptags()
 call pathogen#runtime_append_all_bundles()
 
 " GitGlutter
-
 highlight SignColumn ctermbg=None
 
 " NERDTree
@@ -160,37 +116,7 @@ let NERDTreeShowHidden=1
 let NERDTreeQuitOnOpen=1          " quit on opening files from the tree
 let NERDTreeHighlightCursorline=1 " highlight the selected entry in the tree
 let NERDTreeMouseMode=2           " use a single click to fold/unfold directories and a double click to open files
-let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.py\$class$', '\.obj$',
-            \ '\.o$', '\.so$', '\.egg$', '^\.git$' ] " don't display these kinds of files
+let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.py\$class$', '\.obj$', '\.o$', '\.so$', '\.egg$', '^\.git$', '\.swp$' ] " don't display these kinds of files
 
 " TagBar
-
 nmap ,q :TagbarToggle<CR>
-
-let g:tagbar_type_go = {
-            \ 'ctagstype' : 'go',
-            \ 'kinds'     : [
-            \ 'p:package',
-            \ 'i:imports:1',
-            \ 'c:constants',
-            \ 'v:variables',
-            \ 't:types',
-            \ 'n:interfaces',
-            \ 'w:fields',
-            \ 'e:embedded',
-            \ 'm:methods',
-            \ 'r:constructor',
-            \ 'f:functions'
-            \ ],
-            \ 'sro' : '.',
-            \ 'kind2scope' : {
-            \ 't' : 'ctype',
-            \ 'n' : 'ntype'
-            \ },
-            \ 'scope2kind' : {
-            \ 'ctype' : 't',
-            \ 'ntype' : 'n'
-            \ },
-            \ 'ctagsbin'  : 'gotags',
-            \ 'ctagsargs' : '-sort -silent'
-            \ }
