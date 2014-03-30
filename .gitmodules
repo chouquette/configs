@@ -6,7 +6,7 @@
 	url = https://github.com/scrooloose/nerdtree
 [submodule ".vim/bundle/snipmate"]
 	path = .vim/bundle/snipmate
-	url = https://github.com/msanders/snipmate.vim
+	url = https://github.com/3XX0/snipmate.vim
 [submodule ".vim/bundle/tagbar"]
 	path = .vim/bundle/tagbar
 	url = https://github.com/majutsushi/tagbar
