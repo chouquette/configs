@@ -48,6 +48,7 @@ set nowrap            " don't wrap lines
 set wildignore=*.swp,*.bak,*.pyc
 set list listchars=tab:→\ ,trail:.
 set nobackup          " do not keep a backup file, use versionning instead
+set showmode
 
 " Fold settings
 set foldmethod=syntax
@@ -57,13 +58,16 @@ set foldenable
 " Enable / Disable the paste mode
 nnoremap ,p :set invpaste paste?<CR>
 set pastetoggle=,p
-set showmode
+
+" Enable / Disable the spell mode
+nnoremap ,s :set invspell spell?<CR>
+set pastetoggle=,s
 
 " Turn off hightlighted search
 nnoremap ,h :silent noh<CR>
 
 " Open the shell
-nnoremap ,s :shell<CR>
+nnoremap ,t :shell<CR>
 
 " Enter validates completion
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
@@ -120,3 +124,4 @@ let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.py\$class$', '\.obj$', '\.o$', '\.so
 
 " TagBar
 nmap ,q :TagbarToggle<CR>
+
