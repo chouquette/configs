@@ -124,4 +124,3 @@ let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.py\$class$', '\.obj$', '\.o$', '\.so
 
 " TagBar
 nmap ,q :TagbarToggle<CR>
-
