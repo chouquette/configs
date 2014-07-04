@@ -28,4 +28,4 @@ replace() {
     }"
 }
 
-export GOPATH=/home/exxo/work/godev
+export GOPATH=/home/exxo/dev/go
