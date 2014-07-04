@@ -28,4 +28,5 @@ replace() {
     }"
 }
 
-export GOPATH=/home/exxo/dev/go
+export GOPATH=~/dev/go
+export CDPATH=.:~:~/dev
