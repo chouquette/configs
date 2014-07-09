@@ -9,7 +9,7 @@ git submodule update
 cd -
 
 for file in $(ls -A "$SCRIPT_PATH"); do
-    if [ "$file" != "$SCRIPT_NAME" ] && [ "$file" != ".git" ] && [ "$file" != ".gitmodules" ]; then
+    if [ "$file" != "$SCRIPT_NAME" ] && [ "$file" != ".git" ] && [ "$file" != ".gitmodules" ] && [ "$file" != "README.md" ]; then
         ln -s "$SCRIPT_PATH"/"$file" "$HOME"/"$file"
     fi
 done
