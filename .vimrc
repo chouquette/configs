@@ -89,6 +89,9 @@ au FileType python  set  autoindent
 au FileType c       setl sw=8 ts=8 sts=4
 au FileType cpp     setl sw=4 ts=4 sts=2
 
+" Avoid boost autocompletion
+set include=^\\s*#\\s*include\ \\(<boost/\\)\\@!
+
 " Extra whitespaces
 highlight ExtraWhitespace ctermbg=red guibg=red
 au ColorScheme * highlight ExtraWhitespace guibg=red

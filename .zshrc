@@ -30,3 +30,5 @@ replace() {
 
 export GOPATH=~/dev/go
 export CDPATH=.:~:~/dev
+
+export PATH=$PATH:$GOPATH/bin
