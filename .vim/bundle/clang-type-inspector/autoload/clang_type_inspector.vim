@@ -34,7 +34,7 @@ function! clang_type_inspector#inspect_type_at(line, col, option)
     endif
 
     if empty(type_info) || ! has_key(type_info, 'type')
-        return ""
+        return "type unknown"
     endif
 
     if g:clang_type_inspector#canonical_type == 2 || type_info.type ==# type_info.canonical.type
@@ -44,7 +44,7 @@ function! clang_type_inspector#inspect_type_at(line, col, option)
     else
         return type_info.type
     endif
-    return ''
+    return "type unknown"
 endfunction
 
 function! s:shorten_for_oneline_output(output)

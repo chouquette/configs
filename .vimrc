@@ -127,3 +127,10 @@ let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.py\$class$', '\.obj$', '\.o$', '\.so
 
 " TagBar
 nmap ,q :TagbarToggle<CR>
+
+" Clang auto inspector
+let g:clang_type_inspector#automatic_inspection=0
+augroup clang-inspect-type-mapping
+    autocmd!
+    autocmd FileType cpp nmap <C-i> <Plug>(clang-inspect-type-at-cursor)
+augroup END
