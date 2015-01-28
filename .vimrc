@@ -72,6 +72,9 @@ nnoremap ,t :shell<CR>
 " Enter validates completion
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
 
+" Ctags definition in new tab
+map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+
 " Fast window resizing
 nmap <S-Down> :res +5<CR>
 nmap <S-Up> :res -5<CR>

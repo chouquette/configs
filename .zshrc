@@ -19,9 +19,12 @@ bindkey -v
 
 alias ll='ls -l --color'
 alias lld='ls -ld --color */'
-alias grepr='grep -R --color'
 alias sysupdate='yaourt -Suya --noconfirm'
 alias json="python -mjson.tool"
+
+grepr() {
+    grep -s -n -I -R --color=always -- $1 $2 | sed -e "s/:/ +/"
+}
 
 replace() {
     grep -R -I -E $1 2> /dev/null | cut -d ':' -f1 | xargs sed -i -e "/$1/{s;$2;$3;g; w /dev/stdout
