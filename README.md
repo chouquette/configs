@@ -1,4 +1,4 @@
 configs
 =======
 
-XFCE layout : AwOken + BSM simple
+lxqt + menda-themes-dark + awoken
