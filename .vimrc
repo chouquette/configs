@@ -61,13 +61,15 @@ set pastetoggle=,p
 
 " Enable / Disable the spell mode
 nnoremap ,s :set invspell spell?<CR>
-set pastetoggle=,s
 
 " Turn off hightlighted search
 nnoremap ,h :silent noh<CR>
 
 " Open the shell
 nnoremap ,t :shell<CR>
+
+" Enable / Disable line numbering
+nnoremap ,l :set invnumber nonu?<CR>
 
 " Enter validates completion
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
@@ -83,6 +85,10 @@ nmap <S-Right> <C-W>5>
 
 nmap <Space> <PageDown>
 cmap tb tabnew
+
+" Quick fix mappings
+nmap '[q' :cp<CR>
+nmap ']q' :cn<CR>
 
 " Restore cursor position
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
