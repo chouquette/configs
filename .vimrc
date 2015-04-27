@@ -87,8 +87,8 @@ nmap <Space> <PageDown>
 cmap tb tabnew
 
 " Quick fix mappings
-nmap '[q' :cp<CR>
-nmap ']q' :cn<CR>
+nmap [q :cp<CR>
+nmap ]q :cn<CR>
 
 " Restore cursor position
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
