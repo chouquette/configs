@@ -1,20 +1,26 @@
 set noexpandtab
 set list listchars=tab:\ \ ,
 
-au BufWritePre *.go Fmt
+autocmd BufWritePre *.go call go#fmt#Format(-1)
+
+command! -nargs=0 Fmt call go#fmt#Format(-1)
+command! -nargs=0 Imports call go#fmt#Format(1)
+
+command! -nargs=? Drop call go#import#SwitchImport(0, '', <f-args>)
+command! -nargs=1 Import call go#import#SwitchImport(1, '', <f-args>)
+command! -nargs=* ImportAs call go#import#SwitchImport(1, <f-args>)
 
 function! s:GoVet()
     cexpr system("go vet " . shellescape(expand('%')))
     copen
 endfunction
-command! GoVet :call s:GoVet()
-
+command! Vet :call s:GoVet()
 
 function! s:GoLint()
     cexpr system("golint " . shellescape(expand('%')))
     copen
 endfunction
-command! GoLint :call s:GoLint()
+command! Lint :call s:GoLint()
 
 " TagBar plugin
 let g:tagbar_type_go = {
