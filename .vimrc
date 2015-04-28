@@ -93,6 +93,9 @@ nmap ]q :cn<CR>
 " Restore cursor position
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
 
+" Unfold by default
+au BufWinEnter * normal zR
+
 " Activate some language indentation
 au FileType python  set  autoindent
 au FileType c       setl sw=8 ts=8 sts=4
