@@ -216,3 +216,5 @@ export GOPATH=~/go/:~/dev/scrobble
 export PATH="${GOPATH//://bin:}/bin:$PATH"
 
 export PATH="$PATH:/opt/qtcreator-3.3.2/bin"
+
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
