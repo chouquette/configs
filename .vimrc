@@ -83,7 +83,6 @@ nmap <S-Up> :res -5<CR>
 nmap <S-Left> <C-W>5<
 nmap <S-Right> <C-W>5>
 
-nmap <Space> <PageDown>
 cmap tb tabnew
 
 " Quick fix mappings
