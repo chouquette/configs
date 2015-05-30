@@ -1,0 +1,1 @@
+au BufNewFile,Bufread *.cws,*.cwt set filetype=cws
