@@ -1,4 +1,21 @@
 set nocompatible      " use vim defaults
+
+" Enable Vundle
+
+filetype off
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+call vundle#end()
+filetype plugin indent on
+
+" End Vundle part
+
+
 set ls=2              " always show status line
 set tabstop=4         " number of space of the tab character
 set shiftwidth=4      " number of space of (auto)indent
@@ -75,9 +92,6 @@ if has("autocmd")
     au BufNewFile,BufRead *.pls set syntax=dosini
     au BufNewFile,BufRead modprobe.conf set syntax=modconf
 endif
-
-filetype plugin on
-filetype plugin indent on
 
 map <F1> :previous<CR>              " map F1 to open previous buffer
 map <F2> :next<CR>                  " map F2 to open next buffer
