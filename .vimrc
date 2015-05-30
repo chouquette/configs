@@ -127,3 +127,7 @@ let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 " NERDTree
 nmap ,m :NERDTreeToggle<CR>
 nmap ,n :NERDTreeFind<CR>
+
+" Disable go-def with :gd since I want it to be a word search
+let g:go_def_mapping_enabled = 0
+
