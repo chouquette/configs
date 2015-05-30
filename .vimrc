@@ -11,6 +11,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 Plugin 'fatih/vim-go'
+Plugin 'majutsushi/tagbar'
 
 call vundle#end()
 filetype plugin indent on
@@ -103,6 +104,7 @@ map ,v :sp ~/.vimrc<CR>             " edit my .vimrc file in a split
 map ,e :e ~/.vimrc<CR>              " edit my .vimrc file
 map ,u :source ~/.vimrc<CR>         " update the system settings from the vimrc
 map ,s :shell<CR>
+map ,q :TagbarToggle<CR>
 nmap <c-s> :w<CR>
 imap <c-s> <Esc>:w<CR>a
 
