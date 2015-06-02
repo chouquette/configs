@@ -1,22 +1,10 @@
 [user]
-	email = hugo@beauzee.fr
-	name = Hugo Beauzée-Luyssen
-	mail = jbjcalmels@gmail.com
+    email = hugo@beauzee.fr
+    name = Hugo Beauzée-Luyssen
 [core]
     editor = vim
     excludesfile = ~/.gitignore
 [merge]
-	tool = vimdiff
+    tool = vimdiff
 [push]
-    default = upstream
-[alias]
-    ci = commit
-    st = status
-    ps = push
-    pl = pull
-    gl = log --graph
-    df = !git diff | vim -
-    dfc = !git diff --cached | vim -
-    cp = cherry-pick
-    br = branch
-    mgt = mergetool
+    default = simple
