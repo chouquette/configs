@@ -123,6 +123,8 @@ let g:neocomplete#enable_smart_case = 1
 " Set minimum syntax keyword length.
 let g:neocomplete#sources#syntax#min_keyword_length = 3
 let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+inoremap <expr><C-@> pumvisible() ? "\<C-n>" : neocomplete#start_manual_complete()
+let g:neocomplete#disable_auto_complete=1
 
 " NERDTree
 nmap ,m :NERDTreeToggle<CR>
