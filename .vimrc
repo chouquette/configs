@@ -130,6 +130,7 @@ let g:neocomplete#disable_auto_complete=1
 " NERDTree
 nmap ,m :NERDTreeToggle<CR>
 nmap ,n :NERDTreeFind<CR>
+let NERDTreeQuitOnOpen = 1
 
 " Helpers for goto def & friends
 map <F2> :GoDef<CR>
