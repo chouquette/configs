@@ -131,6 +131,11 @@ let g:neocomplete#disable_auto_complete=1
 nmap ,m :NERDTreeToggle<CR>
 nmap ,n :NERDTreeFind<CR>
 
+" Helpers for goto def & friends
+map <F2> :GoDef<CR>
+map <S-F2> :vs<CR> <C-w><Right> :GoDef<CR>
+map <F3> :sp<CR> <C-w><Up> :GoDef<CR>
+
 " Disable go-def with :gd since I want it to be a word search
 let g:go_def_mapping_enabled = 0
 
