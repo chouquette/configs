@@ -33,6 +33,7 @@ set visualbell t_vb=  " turn off error beep/flash
 set novisualbell      " turn off visual bell
 set number            " show line numbers
 set ignorecase        " ignore case when searching
+set smartcase         " Don't ignore case when a pattern has a capital letter
 set title             " show title (console)
 set titleold=         " reset the title at exit
 set titlestring=VIM:\ %F
