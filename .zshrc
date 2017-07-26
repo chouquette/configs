@@ -32,7 +32,7 @@ alias s='cd ..'
 alias df='df --human-readable'
 alias du='du --human-readable'
 
-alias dedibox="ssh chouquette@l0cal.com"
+alias dedibox="mosh chouquette@storm.l0cal.com"
 alias fpi="ssh fairplay@test.zoond.tv"
 alias make="make -j 5"
 alias grep="grep --color"
@@ -211,8 +211,25 @@ autoload -U compinit
 compinit
 export EDITOR=`which vim`
 
-export GOROOT=/usr/lib/go
-export GOPATH=~/go/:~/dev/scrobble/backend/go
-export PATH="${GOROOT}/site/bin/:${GOPATH//://bin:}/bin:$PATH"
+export GOROOT=/usr/local/go/
+#export GOPATH=~/go/:~/dev/scrobble/backend/go
+#export PATH="${GOROOT}/bin/:${GOPATH//://bin:}/bin:$PATH"
 
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+export TIZEN_SDK="/home/chouquette/tizen-sdk/"
+export TIZEN_ABI=x86
+
+export PATH="$PATH:$HOME/tools/scripts"
+export PATH="/home/chouquette/dev/vlc/extras/tools/build/bin:$PATH"
+
+export ANDROID_NDK=/opt/android-ndk/
+export ANDROID_SDK=/opt/android-sdk/
+export PATH=$PATH:$ANDROID_SDK/platform-tools:$ANDROID_SDK/tools
+
+export PATH=/opt/gcc-i686/bin:/opt/gcc-x86_64/bin:$PATH
+
+unset SSH_AGENT_PID
+export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
+
+export JAVA_HOME=$(readlink -f /usr/bin/java | sed "s:jre/bin/java::")
+export LIBBLURAY_CP=$HOME/dev/prefix/share/java/
